@@ -1,0 +1,5 @@
+.menu-texto:hover{
+    /* text-decoration: underline; */
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.25);
+}

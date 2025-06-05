@@ -1,33 +1,32 @@
 <div class="row" style="height: 100vh; width: 100vw; ">
     <div class="col col-sm-2" style="background-color: #F0F0F0; padding: 20px 30px;">
-        <div class="card" style="background-color: #CBE6C7; border: none;padding: 10px;">
-            <span style="font-weight: 600; font-size: 20px;"> RH </span>
-            <p style="font-weight: 600; font-size: 20px;"> Ponto Eletrônico </p>
+        <div class="card" style="background-color: #CBE6C7; border: none;padding: 20px; margin-top: 15px;">
+            <span style="font-weight: 700; font-size: 20px; text-align: center;"> RH </span>
+            <p style="font-weight: 700; font-size: 20px; text-align: center; margin-bottom: 0px;"> Ponto Eletrônico </p>
         </div>
 
-        <div class="d-flex flex-column mb-3" style="margin-top: 30px; gap: 36px;">
-            <p class="menu-texto" style="font-size: 16px;">Colaboradores</p>
-            <p class="menu-texto" style="font-size: 16px;">Administrador</p>
-            <p class="menu-texto" style="font-size: 16px;">Relatório</p>
-            <p class="menu-texto" style="font-size: 16px;">Sair</p>
+        <div class="d-flex flex-column mb-3" style="margin-top: 30px; gap: 55px;">
+            <p class="menu-texto" style="font-size: 18px;" (click)="paginaColaboradores()">Colaboradores</p>
+            <p class="menu-texto" style="font-size: 18px;" (click)="paginaAdm()">Administrador</p>
+            <p class="menu-texto" style="font-size: 18px;" (click)="logout()">Sair</p>
         </div>
 
         <img src="../../../assets/work.png" alt="">
     </div>
 
     <div class="col" style="background-color: #8FB78F; padding: 20px; ">
-        <div class="row d-flex"
-            style="background-color: #F0F0F0; border-radius: 50px; width: 836px; height: 76px; padding: 0 15px; align-content: center; margin: 0 auto;">
-            <div class="col justify-content-start">
+        <div class="d-flex"
+            style="background-color: #F0F0F0; border-radius: 50px; width: 836px; height: 76px; padding: 4px 40px; align-content: center; margin: 0 auto; justify-content: space-between;">
+            <div style="align-content: center; height: 40%; margin: auto 0;">
                 <p style="font-size: 16px; font-weight: 600;">Controle de Ponto</p>
             </div>
 
-            <div class="col justify-content-end">
+            <div style="align-content: center; height: 40%; margin: auto 0">
                 <p style="font-size: 16px; font-weight: 600;">Administrador</p>
             </div>
         </div>
 
-        <div class="row" style="margin-top: 30px;">
+        <div class="d-flex" style="margin:30px auto; width: 1024px;">
             <div class="col"
                 style="background-color: #F0F0F0; width: 292px; height: 136px; border-radius: 10px; margin: 0 20px;">
                 <div class="d-flex flex-column" style="margin-top: 20px; padding: 0 15px;">
@@ -59,9 +58,11 @@
                 <p style="font-size: 20px; font-weight: 600;">Funcionários com mais horas extras</p>
 
                 <div class="d-flex justify-content-between"
-                    style="background-color: #8FB78F; border-radius: 10px; padding: 5px 20px; width: 440px; margin-bottom: 10px;">
+                    style="background-color: #CBE6C7; border-radius: 10px; padding: 5px 20px; width: 440px; margin-bottom: 10px;">
                     <div class="d-flex">
-                        <div style="background-color: aquamarine; height: 50px; width: 50px; border-radius: 100%; margin-right: 15px;"></div>
+                        <div
+                            style="background-color: aquamarine; height: 50px; width: 50px; border-radius: 100%; margin-right: 15px;">
+                        </div>
 
                         <div>
                             <p style="font-size: 16px; font-weight: 600; margin: 0px;">Jéssica Lima</p>
@@ -69,55 +70,8 @@
                         </div>
                     </div>
 
-                    <div style="background-color: aquamarine; border-radius: 100%; height: 50px; width: 50px; text-align: center; align-content: center;">
-                        <span style="font-weight: 700; font-size: 18px;">5h</span>
-                    </div>
-                </div>
-
-                 <div class="d-flex justify-content-between"
-                    style="background-color: #8FB78F; border-radius: 10px; padding: 5px 20px; width: 440px; margin-bottom: 10px;">
-                    <div class="d-flex">
-                        <div style="background-color: aquamarine; height: 50px; width: 50px; border-radius: 100%; margin-right: 15px;"></div>
-
-                        <div>
-                            <p style="font-size: 16px; font-weight: 600; margin: 0px;">Jéssica Lima</p>
-                            <span style="font-size: 12px; color: rgba(0, 0, 0, 0.7);">Gerente de TI</span>
-                        </div>
-                    </div>
-
-                    <div style="background-color: aquamarine; border-radius: 100%; height: 50px; width: 50px; text-align: center; align-content: center;">
-                        <span style="font-weight: 700; font-size: 18px;">5h</span>
-                    </div>
-                </div>
-
-                 <div class="d-flex justify-content-between"
-                    style="background-color: #8FB78F; border-radius: 10px; padding: 5px 20px; width: 440px; margin-bottom: 10px;">
-                    <div class="d-flex">
-                        <div style="background-color: aquamarine; height: 50px; width: 50px; border-radius: 100%; margin-right: 15px;"></div>
-
-                        <div>
-                            <p style="font-size: 16px; font-weight: 600; margin: 0px;">Jéssica Lima</p>
-                            <span style="font-size: 12px; color: rgba(0, 0, 0, 0.7);">Gerente de TI</span>
-                        </div>
-                    </div>
-
-                    <div style="background-color: aquamarine; border-radius: 100%; height: 50px; width: 50px; text-align: center; align-content: center;">
-                        <span style="font-weight: 700; font-size: 18px;">5h</span>
-                    </div>
-                </div>
-
-                 <div class="d-flex justify-content-between"
-                    style="background-color: #8FB78F; border-radius: 10px; padding: 5px 20px; width: 440px; margin-bottom: 10px;">
-                    <div class="d-flex">
-                        <div style="background-color: aquamarine; height: 50px; width: 50px; border-radius: 100%; margin-right: 15px;"></div>
-
-                        <div>
-                            <p style="font-size: 16px; font-weight: 600; margin: 0px;">Jéssica Lima</p>
-                            <span style="font-size: 12px; color: rgba(0, 0, 0, 0.7);">Gerente de TI</span>
-                        </div>
-                    </div>
-
-                    <div style="background-color: aquamarine; border-radius: 100%; height: 50px; width: 50px; text-align: center; align-content: center;">
+                    <div
+                        style="background-color: aquamarine; border-radius: 100%; height: 50px; width: 50px; text-align: center; align-content: center;">
                         <span style="font-weight: 700; font-size: 18px;">5h</span>
                     </div>
                 </div>
@@ -125,7 +79,9 @@
                 <div class="d-flex justify-content-between"
                     style="background-color: #8FB78F; border-radius: 10px; padding: 5px 20px; width: 440px; margin-bottom: 10px;">
                     <div class="d-flex">
-                        <div style="background-color: aquamarine; height: 50px; width: 50px; border-radius: 100%; margin-right: 15px;"></div>
+                        <div
+                            style="background-color: aquamarine; height: 50px; width: 50px; border-radius: 100%; margin-right: 15px;">
+                        </div>
 
                         <div>
                             <p style="font-size: 16px; font-weight: 600; margin: 0px;">Jéssica Lima</p>
@@ -133,7 +89,65 @@
                         </div>
                     </div>
 
-                    <div style="background-color: aquamarine; border-radius: 100%; height: 50px; width: 50px; text-align: center; align-content: center;">
+                    <div
+                        style="background-color: aquamarine; border-radius: 100%; height: 50px; width: 50px; text-align: center; align-content: center;">
+                        <span style="font-weight: 700; font-size: 18px;">5h</span>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between"
+                    style="background-color: #CBE6C7; border-radius: 10px; padding: 5px 20px; width: 440px; margin-bottom: 10px;">
+                    <div class="d-flex">
+                        <div
+                            style="background-color: aquamarine; height: 50px; width: 50px; border-radius: 100%; margin-right: 15px;">
+                        </div>
+
+                        <div>
+                            <p style="font-size: 16px; font-weight: 600; margin: 0px;">Jéssica Lima</p>
+                            <span style="font-size: 12px; color: rgba(0, 0, 0, 0.7);">Gerente de TI</span>
+                        </div>
+                    </div>
+
+                    <div
+                        style="background-color: aquamarine; border-radius: 100%; height: 50px; width: 50px; text-align: center; align-content: center;">
+                        <span style="font-weight: 700; font-size: 18px;">5h</span>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between"
+                    style="background-color: #8FB78F; border-radius: 10px; padding: 5px 20px; width: 440px; margin-bottom: 10px;">
+                    <div class="d-flex">
+                        <div
+                            style="background-color: aquamarine; height: 50px; width: 50px; border-radius: 100%; margin-right: 15px;">
+                        </div>
+
+                        <div>
+                            <p style="font-size: 16px; font-weight: 600; margin: 0px;">Jéssica Lima</p>
+                            <span style="font-size: 12px; color: rgba(0, 0, 0, 0.7);">Gerente de TI</span>
+                        </div>
+                    </div>
+
+                    <div
+                        style="background-color: aquamarine; border-radius: 100%; height: 50px; width: 50px; text-align: center; align-content: center;">
+                        <span style="font-weight: 700; font-size: 18px;">5h</span>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between"
+                    style="background-color: #CBE6C7; border-radius: 10px; padding: 5px 20px; width: 440px; margin-bottom: 10px;">
+                    <div class="d-flex">
+                        <div
+                            style="background-color: aquamarine; height: 50px; width: 50px; border-radius: 100%; margin-right: 15px;">
+                        </div>
+
+                        <div>
+                            <p style="font-size: 16px; font-weight: 600; margin: 0px;">Jéssica Lima</p>
+                            <span style="font-size: 12px; color: rgba(0, 0, 0, 0.7);">Gerente de TI</span>
+                        </div>
+                    </div>
+
+                    <div
+                        style="background-color: aquamarine; border-radius: 100%; height: 50px; width: 50px; text-align: center; align-content: center;">
                         <span style="font-weight: 700; font-size: 18px;">5h</span>
                     </div>
                 </div>
@@ -143,21 +157,29 @@
             <div class="col"
                 style="width: 50%; background-color: #F0F0F0; border-radius: 10px; margin: 0 20px; height: 430px; padding: 20px;">
                 <p style="font-weight: 600; font-size: 20px;">Banco de Horas</p>
-                
-                <div style="background-color: #CBE6C7; width: 200px; height: 200px; border-radius: 100%; margin: 0 auto;"></div>
+
+                <div
+                    style="background-color: #CBE6C7; width: 200px; height: 200px; border-radius: 100%; margin: 0 auto;">
+                </div>
 
                 <div class="d-flex" style="margin: 0 0 20px 30px;">
-                    <div style="background-color: #A02724; height: 25px; width: 25px; border-radius: 100%; margin-right: 8px;"></div>
+                    <div
+                        style="background-color: #A02724; height: 25px; width: 25px; border-radius: 100%; margin-right: 8px;">
+                    </div>
                     <span>Saldo positivo</span>
                 </div>
 
                 <div class="d-flex" style="margin: 0 0 20px 30px;">
-                    <div style="background-color: #54C354; height: 25px; width: 25px; border-radius: 100%; margin-right: 8px;"></div>
+                    <div
+                        style="background-color: #54C354; height: 25px; width: 25px; border-radius: 100%; margin-right: 8px;">
+                    </div>
                     <span>Saldo negativo</span>
                 </div>
-                
-                <div class="d-flex"  style="margin: 0 0 10px 30px;">
-                    <div style="background-color: rgba(0, 0, 0, 0.7); height: 25px; width: 25px; border-radius: 100%; margin-right: 8px;"></div>
+
+                <div class="d-flex" style="margin: 0 0 10px 30px;">
+                    <div
+                        style="background-color: rgba(0, 0, 0, 0.7); height: 25px; width: 25px; border-radius: 100%; margin-right: 8px;">
+                    </div>
                     <span>Saldo zerado</span>
                 </div>
             </div>

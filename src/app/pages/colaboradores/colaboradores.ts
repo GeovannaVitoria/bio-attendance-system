@@ -2,16 +2,14 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'app-colaboradores',
   // imports: [],
   standalone: false,
-  templateUrl: './dashboard.html',
-  styleUrl: './dashboard.css'
+  templateUrl: './colaboradores.html',
+  styleUrl: './colaboradores.css'
 })
-export class Dashboard {
-  constructor(private router: Router) {
-
-  }
+export class Colaboradores {
+  constructor(private router: Router) { }
 
   paginaColaboradores() {
     this.router.navigate(['/colaboradores']);
@@ -24,5 +22,4 @@ export class Dashboard {
   logout() {
     this.router.navigate(['/login']);
   }
-
 }

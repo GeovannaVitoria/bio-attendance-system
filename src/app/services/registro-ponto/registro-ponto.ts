@@ -12,8 +12,8 @@ export class RegistroPonto {
 
   private url = environment.urlRegistroPonto;
 
-  getMediaHorasTrabalhadas(): Observable<number> {
-    return this.httpClient.get<number>(`${this.url}/media-horas`);
+  getMediaHorasTrabalhadas(): Observable<string> {
+    return this.httpClient.get(`${this.url}/media-horas`, { responseType: 'text' });
   }
 
   getQuantidadeAtrasos(): Observable<number> {
@@ -24,12 +24,12 @@ export class RegistroPonto {
     return this.httpClient.get<number>(`${this.url}/top5-horas-extras`);
   }
 
-  getRelatorioSaldoMensal(): Observable<number> {
-    return this.httpClient.get<number>(`${this.url}/relatorio-saldo-mensal`);
+  getRelatorioSaldoSemanal(): Observable<number> {
+    return this.httpClient.get<number>(`${this.url}/relatorio-saldo-semanal`);
   }
 
   getSaldoHoras(idFuncionario: number): Observable<any> {
-    return this.httpClient.get<any>(`${this.url}/saldo-horas?idFuncionario=${idFuncionario}`);
+    return this.httpClient.get<any>(`${this.url}/saldo-horas?funcionarioId=${idFuncionario}`);
   }
 
   getHorasTrabalhadasSemana(funcionarioId: number): Observable<any> {
@@ -57,6 +57,5 @@ export class RegistroPonto {
       }
     });
   }
-
 
 }

@@ -13,7 +13,7 @@ import { Administradores } from '../../services/administradores/administradores'
 })
 export class Dashboard {
   colaboradoresAtivos: number | undefined;
-  mediaHorasTrabalhadas: number | undefined;
+  mediaHorasTrabalhadas: string = '';
   quantidadeAtrasos: number | undefined;
   relacaoHorasExtras: any;
   relatorioSaldoMensal: any;
@@ -50,6 +50,12 @@ export class Dashboard {
     this.loadResumoMensal();
   }
 
+  formatarHoras(horaStr: string): string {
+    if (!horaStr) return '0h';
+    const horas = parseInt(horaStr.split(':')[0], 10);
+    return `${horas}h`;
+  }
+
   // Funcionarios Service
   loadColaboradoresAtivos() {
     this.funcionarioService.getQuantidadeColaboradoresAtivos().subscribe(
@@ -81,7 +87,7 @@ export class Dashboard {
   }
 
   loadRelatorioSaldos() {
-    this.registroPontoService.getRelatorioSaldoMensal().subscribe(
+    this.registroPontoService.getRelatorioSaldoSemanal().subscribe(
       resposta => this.relatorioSaldoMensal = resposta,
       erro => console.error('Erro ao buscar relatório de saldos', erro)
     );

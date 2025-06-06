@@ -11,18 +11,20 @@
             <p class="menu-texto" style="font-size: 18px;" (click)="logout()">Sair</p>
         </div>
 
-        <img src="../../../assets/work.png" alt="">
+        <img src="../../../assets/figura.svg" style="width: 230px; height: 230px;" style="margin-top: 50px;" alt="">
     </div>
 
     <div class="col" style="background-color: #8FB78F; padding: 20px; ">
         <div class="d-flex"
             style="background-color: #F0F0F0; border-radius: 50px; width: 836px; height: 76px; padding: 4px 40px; align-content: center; margin: 0 auto; justify-content: space-between;">
-            <div style="align-content: center; height: 40%; margin: auto 0;">
-                <p style="font-size: 16px; font-weight: 600;">Controle de Ponto</p>
+            <div style="align-content: center; height: 40%; margin: auto 0;" class="d-flex">
+                <img src="../../../assets/Fingerprint.svg" alt="">
+                <p style="font-size: 16px; font-weight: 600; margin-left: 8px; margin-top: 2px;">Controle de Ponto</p>
             </div>
 
-            <div style="align-content: center; height: 40%; margin: auto 0">
-                <p style="font-size: 16px; font-weight: 600;">Administrador</p>
+            <div style="align-content: center; height: 40%; margin: auto 0; align-content: center;" class="d-flex">
+                <img src="../../../assets/PersonCircle.svg" alt="">
+                <p style="font-size: 16px; font-weight: 600; margin-left: 8px; margin-top: 2px;">Administrador</p>
             </div>
         </div>
 
@@ -31,7 +33,10 @@
                 style="background-color: #F0F0F0; width: 292px; height: 136px; border-radius: 10px; margin: 0 20px;">
                 <div class="d-flex flex-column" style="margin-top: 20px; padding: 0 15px;">
                     <p style="font-weight: 700; font-size: 32px;">36</p>
-                    <p style="font-size: 18px; font-weight: 600;">Colaboradores ativos</p>
+                    <div class="d-flex">
+                        <img src="../../../assets/ativos.svg" style="width: 25px; height: 25px; margin-right: 5px;" alt="">
+                        <p style="font-size: 18px; font-weight: 600;">{{ colaboradoresAtivos }}</p>
+                    </div>
                 </div>
             </div>
 
@@ -39,7 +44,10 @@
                 style="background-color: #F0F0F0; width: 292px; height: 136px; border-radius: 10px; margin: 0 20px;">
                 <div class="d-flex flex-column" style="margin-top: 20px; padding: 0 15px;">
                     <p style="font-weight: 700; font-size: 32px;">7:45</p>
-                    <p style="font-size: 18px; font-weight: 600;">Média de horas</p>
+                    <div class="d-flex">
+                        <img src="../../../assets/grafico-horas.svg" style="width: 25px; height: 25px; margin-right: 5px;" alt="">
+                        <p style="font-size: 18px; font-weight: 600;">Média de horas</p>
+                    </div>
                 </div>
             </div>
 
@@ -47,7 +55,10 @@
                 style="background-color: #F0F0F0; width: 292px; height: 136px; border-radius: 10px; margin: 0 20px;">
                 <div class="d-flex flex-column" style="margin-top: 20px; padding: 0 15px;">
                     <p style="font-weight: 700; font-size: 32px;">40</p>
-                    <p style="font-size: 18px; font-weight: 600;">Atrasos</p>
+                    <div class="d-flex">
+                        <img src="../../../assets/atrasos.svg" style="width: 25px; height: 25px; margin-right: 5px;" alt="">
+                        <p style="font-size: 18px; font-weight: 600;">Atrasos</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -71,7 +82,7 @@
                     </div>
 
                     <div
-                        style="background-color: aquamarine; border-radius: 100%; height: 50px; width: 50px; text-align: center; align-content: center;">
+                        style="background-color: #8FB78F; border-radius: 100%; height: 50px; width: 50px; text-align: center; align-content: center;">
                         <span style="font-weight: 700; font-size: 18px;">5h</span>
                     </div>
                 </div>
@@ -90,7 +101,7 @@
                     </div>
 
                     <div
-                        style="background-color: aquamarine; border-radius: 100%; height: 50px; width: 50px; text-align: center; align-content: center;">
+                        style="background-color: #CBE6C7; border-radius: 100%; height: 50px; width: 50px; text-align: center; align-content: center;">
                         <span style="font-weight: 700; font-size: 18px;">5h</span>
                     </div>
                 </div>
@@ -109,7 +120,7 @@
                     </div>
 
                     <div
-                        style="background-color: aquamarine; border-radius: 100%; height: 50px; width: 50px; text-align: center; align-content: center;">
+                        style="background-color: #8FB78F; border-radius: 100%; height: 50px; width: 50px; text-align: center; align-content: center;">
                         <span style="font-weight: 700; font-size: 18px;">5h</span>
                     </div>
                 </div>
@@ -128,7 +139,7 @@
                     </div>
 
                     <div
-                        style="background-color: aquamarine; border-radius: 100%; height: 50px; width: 50px; text-align: center; align-content: center;">
+                        style="background-color: #CBE6C7; border-radius: 100%; height: 50px; width: 50px; text-align: center; align-content: center;">
                         <span style="font-weight: 700; font-size: 18px;">5h</span>
                     </div>
                 </div>
@@ -147,7 +158,7 @@
                     </div>
 
                     <div
-                        style="background-color: aquamarine; border-radius: 100%; height: 50px; width: 50px; text-align: center; align-content: center;">
+                        style="background-color: #8FB78F; border-radius: 100%; height: 50px; width: 50px; text-align: center; align-content: center;">
                         <span style="font-weight: 700; font-size: 18px;">5h</span>
                     </div>
                 </div>

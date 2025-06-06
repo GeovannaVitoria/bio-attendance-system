@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { Colaboradores } from './colaboradores/colaboradores';
 import { Dashboard } from './dashboard/dashboard';
 import { Login } from './login/login';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,11 @@ import { Login } from './login/login';
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
+  exports: [
+    Login
+  ]
 })
 export class PagesModule {}

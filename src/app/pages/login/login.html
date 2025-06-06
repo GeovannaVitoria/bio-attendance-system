@@ -1,25 +1,43 @@
 <div class="d-flex" style="justify-content: space-between; background-color: #CBE6C7;">
-    <div style="height: 100vh;">
-        <img src="assets/Polygon 1.png" style="width: 100%; height: 100%;" alt="">
+    <div class="img-login">
+        <img src="../../../assets/logo.svg" style="position: absolute; top: 30%; left: 15%;" alt="">
     </div>
 
-    <div style="width: 50%; padding: 100px;">
-        <div class="card" style="height: 523px; width: 400px; margin: auto auto; border: none; border-radius: 37px; padding: 20px;">
-            <div style="text-align: center; font-size: 30px; font-weight: 700;">
+    <div style="width: 50vw; padding: 100px;">
+        <div class="card"
+            style="height: 530px; width: 500px; margin: 40px auto 0 auto; border: none; border-radius: 37px; padding: 20px;">
+            <div style="text-align: center; font-size: 30px; font-weight: 700; margin-top: 40px;">
                 Login
             </div>
-            <div class="d-flex flex-column" style="margin: 50px auto;">
-                <label style="font-size: 16px; color: rgba(0, 0, 0, 0.8); font-weight: 600; margin-left: 38px;">Usuário</label>
-                <input type="text" placeholder="Digite o seu usuário" style="width: 273px; border-radius: 30px; background-color: #8FB78F; border: none; padding: 20px;">
-            </div>
-            <div class="d-flex flex-column" style="margin: 5px auto;">
-                <label style="font-size: 16px; color: rgba(0, 0, 0, 0.8); font-weight: 600; margin-left: 38px;">Senha</label>
-                <input type="text" placeholder="Digite a sua senha" style="width: 273px; border-radius: 30px; background-color: #8FB78F; border: none; padding: 20px;">
-            </div>
-            <button style="background-color: rgba(143, 183, 143, 0.57); font-weight: 700; font-size: 18px; border: none; border-radius: 30px; height: 40px; width: 148px; margin: 30px auto;" 
-            (click)="paginaAdm()">
-                Entrar
-            </button>
+
+            <form [formGroup]="loginForm" (ngSubmit)="logar()">
+                <div class="d-flex flex-column" style="margin: 50px auto; width: 380px; gap: 20px;">
+                    <div>
+                        <label
+                            style="font-size: 16px; color: rgba(0, 0, 0, 0.8); font-weight: 600; margin-left: 38px;">Usuário</label>
+                        <input type="text" formControlName="usuario" placeholder="Digite o seu usuário"
+                            style="width: 380px; border-radius: 30px; background-color: #8FB78F; border: none; padding: 20px;">
+                        <span *ngIf="usuario?.touched && usuario?.errors?.['required']" style="color: red; font-size: small;"> O usuário é
+                            obrigatório </span>
+                    </div>
+
+                    <div>
+                        <label
+                            style="font-size: 16px; color: rgba(0, 0, 0, 0.8); font-weight: 600; margin-left: 38px;">Senha</label>
+                        <input type="password" formControlName="senha" placeholder="Digite a sua senha"
+                            style="width: 380px; border-radius: 30px; background-color: #8FB78F; border: none; padding: 20px;">
+                        <p *ngIf="senha?.touched && senha?.errors?.['required']" style="color: red;">A senha é
+                            obrigatória </p>
+                    </div>
+
+                </div>
+
+                <button type="submit"
+                    style="background-color: rgba(143, 183, 143, 0.57); font-weight: 700; font-size: 18px; border: none; border-radius: 30px; height: 60px; width: 148px; margin: 0px 150px; padding: 10px; text-align: center;">
+                    Entrar
+                </button>
+            </form>
+
         </div>
 
     </div>

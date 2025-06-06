@@ -1,0 +1,7 @@
+.img-login {
+    height: 100vh;
+    width: 50vw;
+    background-repeat: no-repeat;
+    background-image: url(../../../assets/organic-form.png);
+    position: relative;
+}

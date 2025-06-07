@@ -40,10 +40,11 @@ export class Colaboradores {
     this.loadResumoMensal(id);
   }
 
+
   loadSaldoHoras(id: number) {
     this.registroPontoService.getSaldoHoras(id).subscribe(
-      (      res: any) => this.saldoHoras = res,
-      (      err: any) => console.error('Erro ao buscar saldo de horas', err)
+      (res: any) => this.saldoHoras = res,
+      (err: any) => console.error('Erro ao buscar saldo de horas', err)
     );
   }
   funcionarioId(funcionarioId: any) {
@@ -52,29 +53,29 @@ export class Colaboradores {
 
   loadHorasTrabalhadasSemana(id: number) {
     this.registroPontoService.getHorasTrabalhadasSemana(id).subscribe(
-      (      res: any) => this.horasTrabalhadasSemana = res,
-      (      err: any) => console.error('Erro ao buscar horas trabalhadas na semana', err)
+      (res: any) => this.horasTrabalhadasSemana = res,
+      (err: any) => console.error('Erro ao buscar horas trabalhadas na semana', err)
     );
   }
 
   loadFaltasSemana(id: number) {
     this.registroPontoService.getFaltasSemana(id).subscribe(
-      (      res: any) => this.faltasSemana = res,
-      (      err: any) => console.error('Erro ao buscar faltas na semana', err)
+      (res: any) => this.faltasSemana = res,
+      (err: any) => console.error('Erro ao buscar faltas na semana', err)
     );
   }
 
   loadPontosSemana(id: number) {
     this.registroPontoService.getPontosSemana(id).subscribe(
-      (      res: any) => this.pontosSemana = res,
-      (      err: any) => console.error('Erro ao buscar pontos da semana', err)
+      (res: any) => this.pontosSemana = res,
+      (err: any) => console.error('Erro ao buscar pontos da semana', err)
     );
   }
 
   loadHorasPorDiaSemana(id: number) {
     this.registroPontoService.getHorasPorDiaSemana(id).subscribe(
-      (      res: any) => this.horasPorDiaSemana = res,
-      (      err: any) => console.error('Erro ao buscar horas por dia da semana', err)
+      (res: any) => this.horasPorDiaSemana = res,
+      (err: any) => console.error('Erro ao buscar horas por dia da semana', err)
     );
   }
 
@@ -82,8 +83,8 @@ export class Colaboradores {
     const ano = 2025;
     const mes = 6;
     this.registroPontoService.getResumoMensal(ano, mes, id).subscribe(
-      (      res: any) => this.resumoMensal = res,
-      (      err: any) => console.error('Erro ao buscar resumo mensal', err)
+      (res: any) => this.resumoMensal = res,
+      (err: any) => console.error('Erro ao buscar resumo mensal', err)
     );
   }
 

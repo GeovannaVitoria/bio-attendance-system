@@ -5,13 +5,14 @@ import { Colaboradores } from './colaboradores/colaboradores';
 import { Dashboard } from './dashboard/dashboard';
 import { Login } from './login/login';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MenuLateral } from './menu-lateral/menu-lateral';
 
 @NgModule({
   declarations: [
     Colaboradores,
     Dashboard,
     Login,
-    
+    MenuLateral
   ],
   imports: [
     CommonModule,

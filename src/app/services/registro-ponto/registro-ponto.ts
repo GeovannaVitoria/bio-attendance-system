@@ -29,11 +29,11 @@ export class RegistroPonto {
   }
 
   getSaldoHoras(idFuncionario: number): Observable<any> {
-    return this.httpClient.get<any>(`${this.url}/saldo-horas?funcionarioId=${idFuncionario}`);
+    return this.httpClient.get(`${this.url}/saldo-horas?funcionarioId=${idFuncionario}`, { responseType: 'text' });
   }
 
   getHorasTrabalhadasSemana(funcionarioId: number): Observable<any> {
-    return this.httpClient.get<any>(`${this.url}/horas-trabalhadas-semana/${funcionarioId}`);
+    return this.httpClient.get(`${this.url}/horas-trabalhadas-semana/${funcionarioId}`, { responseType: 'text' });
   }
 
   getFaltasSemana(funcionarioId: number): Observable<any> {

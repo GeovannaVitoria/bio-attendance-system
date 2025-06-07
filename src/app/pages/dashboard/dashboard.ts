@@ -17,12 +17,6 @@ export class Dashboard {
   quantidadeAtrasos: number | undefined;
   relacaoHorasExtras: any;
   relatorioSaldoMensal: any;
-  saldoHoras: any;
-  horasTrabalhadasSemana: any;
-  faltasSemana: any;
-  pontosSemana: any;
-  horasPorDiaSemana: any;
-  resumoMensal: any;
   usuario: string = '';
   senha: string = '';
   mensagem: string = '';
@@ -44,13 +38,6 @@ export class Dashboard {
     this.loadQtdAtrasos();
     this.loadQtdHorasExtras();
     this.loadRelatorioSaldos();
-    this.loadSaldoHoras();
-    this.loadHorasTrabalhadasSemana();
-    this.loadFaltasSemana();
-    this.loadPontosSemana();
-    this.loadHorasPorDiaSemana();
-    this.loadResumoMensal();
-    // this.loadListaFuncionarios();
      this.funcionarioService.getListaFuncionarios().subscribe(data => {
       this.funcionarios = data;
     });
@@ -96,50 +83,6 @@ export class Dashboard {
     this.registroPontoService.getRelatorioSaldoSemanal().subscribe(
       resposta => this.relatorioSaldoMensal = resposta,
       erro => console.error('Erro ao buscar relatório de saldos', erro)
-    );
-  }
-
-  loadSaldoHoras() {
-    this.registroPontoService.getSaldoHoras(this.funcionarioId).subscribe(
-      res => this.saldoHoras = res,
-      err => console.error('Erro ao buscar saldo de horas', err)
-    );
-  }
-
-  loadHorasTrabalhadasSemana() {
-    this.registroPontoService.getHorasTrabalhadasSemana(this.funcionarioId).subscribe(
-      res => this.horasTrabalhadasSemana = res,
-      err => console.error('Erro ao buscar horas trabalhadas na semana', err)
-    );
-  }
-
-  loadFaltasSemana() {
-    this.registroPontoService.getFaltasSemana(this.funcionarioId).subscribe(
-      res => this.faltasSemana = res,
-      err => console.error('Erro ao buscar faltas na semana', err)
-    );
-  }
-
-  loadPontosSemana() {
-    this.registroPontoService.getPontosSemana(this.funcionarioId).subscribe(
-      res => this.pontosSemana = res,
-      err => console.error('Erro ao buscar pontos da semana', err)
-    );
-  }
-
-  loadHorasPorDiaSemana() {
-    this.registroPontoService.getHorasPorDiaSemana(this.funcionarioId).subscribe(
-      res => this.horasPorDiaSemana = res,
-      err => console.error('Erro ao buscar horas por dia da semana', err)
-    );
-  }
-
-  loadResumoMensal() {
-    const ano = 2025;
-    const mes = 6;
-    this.registroPontoService.getResumoMensal(ano, mes, this.funcionarioId).subscribe(
-      res => this.resumoMensal = res,
-      err => console.error('Erro ao buscar resumo mensal', err)
     );
   }
 

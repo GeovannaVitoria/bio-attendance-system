@@ -1,4 +1,6 @@
 <div class="row" style="height: 100vh; width: 100vw; ">
+    <!-- <app-menu-lateral> </app-menu-lateral> -->
+
     <div class="col col-sm-2" style="background-color: #F0F0F0; padding: 20px 30px;">
         <div class="card" style="background-color: #CBE6C7; border: none;padding: 20px; margin-top: 15px;">
             <span style="font-weight: 700; font-size: 20px; text-align: center;"> RH </span>
@@ -6,7 +8,22 @@
         </div>
 
         <div class="d-flex flex-column mb-3" style="margin-top: 30px; gap: 55px;">
-            <p class="menu-texto" style="font-size: 18px;" (click)="paginaColaboradores()">Colaboradores</p>
+
+            <div class="dropdown">
+                <button class=" menu-texto dropdown-toggle" type="button" data-bs-toggle="dropdown" style="border: none;">
+                    Colaboradores
+                </button>
+                <ul class="dropdown-menu">
+                    <li *ngFor="let funcionario of funcionarios">
+                        <a class="dropdown-item" (click)="irParaColaborador(funcionario.id)">
+                            {{ funcionario.nome }}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+
+
             <p class="menu-texto" style="font-size: 18px;" (click)="paginaAdm()">Administrador</p>
             <p class="menu-texto" style="font-size: 18px;" (click)="logout()">Sair</p>
         </div>

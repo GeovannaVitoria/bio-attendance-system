@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Funcionarios } from '../../services/funcionarios/funcionarios';
 
 @Component({
   selector: 'app-colaboradores',
@@ -9,7 +10,20 @@ import { Router } from '@angular/router';
   styleUrl: './colaboradores.css'
 })
 export class Colaboradores {
-  constructor(private router: Router) { }
+  funcionario: any;
+
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private funcionarioService: Funcionarios) { }
+
+  ngOnInit() {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.funcionarioService.getFuncionarioDetalhado(id).subscribe(data => {
+      this.funcionario = data;
+    });
+  }
 
   paginaColaboradores() {
     this.router.navigate(['/colaboradores']);

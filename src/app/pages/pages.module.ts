@@ -10,7 +10,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   declarations: [
     Colaboradores,
     Dashboard,
-    Login
+    Login,
+    
   ],
   imports: [
     CommonModule,

@@ -26,6 +26,8 @@ export class Dashboard {
   usuario: string = '';
   senha: string = '';
   mensagem: string = '';
+ funcionarios: any[] = [];
+
 
   funcionarioId = 1; // mock
 
@@ -48,6 +50,10 @@ export class Dashboard {
     this.loadPontosSemana();
     this.loadHorasPorDiaSemana();
     this.loadResumoMensal();
+    // this.loadListaFuncionarios();
+     this.funcionarioService.getListaFuncionarios().subscribe(data => {
+      this.funcionarios = data;
+    });
   }
 
   formatarHoras(horaStr: string): string {
@@ -158,6 +164,28 @@ export class Dashboard {
         this.mensagem = 'Erro no login: ' + err.message;
       }
     });
+  }
+
+  // loadListaFuncionarios() {
+  //   this.funcionarioService.getListaFuncionarios().subscribe({
+  //     next: (res) => {
+  //       this.listaFuncionarios = res;
+  //     },
+  //     error: (err) => {
+  //       console.error('Erro ao buscar funcionários:', err);
+  //     }
+  //   });
+  // }
+
+
+  // trocarFuncionario(id: number) {
+  //   this.funcionarioId = id;
+  //   this.router.navigate(['/colaboradores'], { queryParams: { id: id } });
+  // }
+
+
+  irParaColaborador(id: number) {
+    this.router.navigate(['/colaboradores', id]);
   }
 
 

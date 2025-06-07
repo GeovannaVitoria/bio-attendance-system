@@ -27,5 +27,12 @@ export class MenuLateral {
     this.router.navigate(['/colaboradores', id]);
   }
 
+   paginaAdm() {
+    this.router.navigate(['/dashboard']);
+  }
+
+   logout() {
+    this.router.navigate(['/login']);
+  }
 
 }

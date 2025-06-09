@@ -89,20 +89,20 @@
                 style="width: 50%; background-color: #F0F0F0; border-radius: 10px; margin: 0 20px; height: 430px; padding: 20px;">
                 <p style="font-weight: 600; font-size: 20px;">Banco de Horas</p>
 
-                <div
-                    style="background-color: #CBE6C7; width: 200px; height: 200px; border-radius: 100%; margin: 0 auto;">
+                <div style="width: 200px; height: 200px; margin: 0 auto;">
+                    <p-chart type="doughnut" [data]="doughnutData" [options]="doughnutOptions"></p-chart>
                 </div>
 
                 <div class="d-flex" style="margin: 0 0 20px 30px;">
                     <div
-                        style="background-color: #A02724; height: 25px; width: 25px; border-radius: 100%; margin-right: 8px;">
+                        style="background-color: #54C354; height: 25px; width: 25px; border-radius: 100%; margin-right: 8px;">
                     </div>
                     <span>Saldo positivo</span>
                 </div>
 
                 <div class="d-flex" style="margin: 0 0 20px 30px;">
                     <div
-                        style="background-color: #54C354; height: 25px; width: 25px; border-radius: 100%; margin-right: 8px;">
+                        style="background-color: #A02724; height: 25px; width: 25px; border-radius: 100%; margin-right: 8px;">
                     </div>
                     <span>Saldo negativo</span>
                 </div>

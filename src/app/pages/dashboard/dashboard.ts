@@ -20,8 +20,9 @@ export class Dashboard {
   usuario: string = '';
   senha: string = '';
   mensagem: string = '';
- funcionarios: any[] = [];
-
+  funcionarios: any[] = [];
+  doughnutData: any;
+  doughnutOptions: any;
 
   funcionarioId = 1; // mock
 
@@ -38,7 +39,7 @@ export class Dashboard {
     this.loadQtdAtrasos();
     this.loadQtdHorasExtras();
     this.loadRelatorioSaldos();
-     this.funcionarioService.getListaFuncionarios().subscribe(data => {
+    this.funcionarioService.getListaFuncionarios().subscribe(data => {
       this.funcionarios = data;
     });
   }
@@ -81,7 +82,32 @@ export class Dashboard {
 
   loadRelatorioSaldos() {
     this.registroPontoService.getRelatorioSaldoSemanal().subscribe(
-      resposta => this.relatorioSaldoMensal = resposta,
+      resposta => {
+
+        this.relatorioSaldoMensal = resposta;
+        this.doughnutData = {
+          labels: ['Positivo', 'Negativo', 'Zerado'],
+          datasets: [
+            {
+              data: [this.relatorioSaldoMensal.quantidadeSaldoPositivo, this.relatorioSaldoMensal.quantidadeSaldoNegativo, this.relatorioSaldoMensal.quantidadeSaldoZerado,],
+              backgroundColor: ['#54C354', '#A02724', 'rgba(0, 0, 0, 0.7)'],
+              hoverBackgroundColor: ['#54C354', '#A02724', 'rgba(0, 0, 0, 0.7)']
+            }
+          ]
+        };
+
+        this.doughnutOptions = {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false
+            }
+          }
+        };
+
+
+      },
       erro => console.error('Erro ao buscar relatório de saldos', erro)
     );
   }

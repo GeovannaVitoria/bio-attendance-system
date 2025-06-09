@@ -7,6 +7,6 @@ export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'login', component: Login },
     { path: 'dashboard', component: Dashboard },
-    // { path: 'colaboradores/:id', component: Colaboradores },
+    { path: 'colaboradores/:id', component: Colaboradores },
     { path: 'colaboradores', component: Colaboradores }
 ];

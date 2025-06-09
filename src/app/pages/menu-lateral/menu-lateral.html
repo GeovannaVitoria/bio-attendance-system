@@ -11,7 +11,7 @@
         </button>
         <ul class="dropdown-menu">
             <li *ngFor="let funcionario of funcionarios">
-                <a class="dropdown-item" (click)="irParaColaborador(funcionario.id)">
+                <a class="dropdown-item" (click)="irParaColaborador(funcionario.id)" style="cursor: pointer;">
                     {{ funcionario.nome }}
                 </a>
             </li>
@@ -20,7 +20,7 @@
 
 
 
-    <p class="menu-texto" style="font-size: 18px;" (click)="paginaAdm()">Administrador</p>
+    <p class="menu-texto" style="font-size: 18px;" (click)="paginaAdm()" style="cursor: pointer;">Administrador</p>
     <p class="menu-texto" style="font-size: 18px;" (click)="logout()">Sair</p>
 </div>
 

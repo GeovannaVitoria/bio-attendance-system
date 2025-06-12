@@ -30,10 +30,6 @@ export class Funcionarios {
     return this.httpClient.get<number>(`${this.url}/ativos`);
   }
 
-  // getListaFuncionarios(): Observable<Funcionario[]> {
-  //   return this.httpClient.get<Funcionario[]>(this.urlLista);
-  // }
-
   getListaFuncionarios(): Observable<any[]> {
     return this.httpClient.get<any[]>(`${this.urlLista}`);
   }
@@ -43,5 +39,7 @@ export class Funcionarios {
     return this.httpClient.get<any>(`${this.urlLista}/${id}`);
   }
 
-
+  adicionarFuncionario(funcionario: Funcionario): Observable<Funcionario> {
+    return this.httpClient.post<Funcionario>(this.urlLista, funcionario);
+  }
 }

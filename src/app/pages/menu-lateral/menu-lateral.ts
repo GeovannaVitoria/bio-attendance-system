@@ -4,26 +4,40 @@ import { Router } from '@angular/router';
 import { Biometria, BiometriaRequest } from '../../services/biometria/biometria';
 import Swal from 'sweetalert2';
 import { Administradores } from '../../services/administradores/administradores';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-menu-lateral',
-  // imports: [],
   standalone: false,
   templateUrl: './menu-lateral.html',
   styleUrl: './menu-lateral.css'
 })
+
 export class MenuLateral implements OnInit {
   funcionarios: any[] = [];
   mensagem: string = '';
+  formFuncionario: FormGroup;
 
   constructor(
     private router: Router,
     private funcionarioService: Funcionarios,
     private biometriaService: Biometria,
-    private administradores: Administradores
-  ) { }
-  ngOnInit(): void {
+    private administradores: Administradores,
+    private fb: FormBuilder,
+  ) {
+    this.formFuncionario = this.fb.group({
+      nome: ['', Validators.required],
+      cargo: ['', Validators.required],
+      urlFoto: ['', Validators.required],
+      status: ['ATIVO', Validators.required],
+      setor: this.fb.group({
+        id: [null, Validators.required],
+        name: ['', Validators.required]
+      })
+    });
+  }
 
+  ngOnInit(): void {
     this.funcionarioService.getListaFuncionarios().subscribe(data => {
       this.funcionarios = data;
     });
@@ -32,25 +46,6 @@ export class MenuLateral implements OnInit {
   irParaColaborador(id: number) {
     this.router.navigate(['/colaboradores', id]);
   }
-
-  // cadastrarBiometria() {
-  //   this.mensagem = 'Posicione o dedo no leitor...';
-
-  //   const dados: BiometriaRequest = {
-  //     bioTemplate: 'Posição no leitor',
-  //     funcionarioId: 2
-  //   };
-
-  //   this.biometriaService.adicionarBiometria(dados).subscribe({
-  //     next: (res) => {
-  //       this.mensagem = 'Biometria cadastrada com sucesso!';
-  //     },
-  //     error: (err) => {
-  //       this.mensagem = 'Erro ao cadastrar biometria';
-  //       console.error(err);
-  //     }
-  //   });
-  // }
 
   cadastrarBiometria() {
     Swal.fire({
@@ -114,13 +109,80 @@ export class MenuLateral implements OnInit {
     });
   }
 
+  abrirModalCadastro() {
+    Swal.fire({
+      title: 'Adicionar Funcionário',
+      html: `
+      <form id="formFuncionario">
+        <input id="nome" placeholder="Nome" class="swal2-input">
+        <input id="cargo" placeholder="Cargo" class="swal2-input">
+        <input id="urlFoto" placeholder="URL da Foto" class="swal2-input">
+        <input id="status" placeholder="Status (ATIVO/INATIVO)" class="swal2-input">
+        <input id="setorId" placeholder="ID do Setor" type="number" class="swal2-input">
+        <input id="setorName" placeholder="Nome do Setor" class="swal2-input">
+      </form>
+    `,
+      focusConfirm: false,
+      showCancelButton: true,
+      confirmButtonText: 'Cadastrar',
+      preConfirm: () => {
+        const nome = (document.getElementById('nome') as HTMLInputElement).value;
+        const cargo = (document.getElementById('cargo') as HTMLInputElement).value;
+        const urlFoto = (document.getElementById('urlFoto') as HTMLInputElement).value;
+        const status = (document.getElementById('status') as HTMLInputElement).value;
+        const setorId = (document.getElementById('setorId') as HTMLInputElement).value;
+        const setorName = (document.getElementById('setorName') as HTMLInputElement).value;
+
+        if (!nome || !cargo || !urlFoto || !status || !setorId || !setorName) {
+          Swal.showValidationMessage('Todos os campos são obrigatórios');
+          return false;
+        }
+
+        return {
+          nome,
+          cargo,
+          urlFoto,
+          status,
+          setor: {
+            id: parseInt(setorId, 10),
+            name: setorName
+          }
+        };
+      }
+    }).then((result) => {
+      if (result.isConfirmed && result.value) {
+        this.cadastrarFuncionario(result.value);
+      }
+    });
+  }
+
+  cadastrarFuncionario(funcionario: any) {
+    this.funcionarioService.adicionarFuncionario(funcionario).subscribe({
+      next: () => {
+        Swal.fire('Sucesso!', 'Funcionário cadastrado com sucesso!', 'success');
+      },
+      error: () => {
+        Swal.fire('Erro!', 'Não foi possível cadastrar o funcionário.', 'error');
+      }
+    });
+  }
 
   paginaAdm() {
     this.router.navigate(['/dashboard']);
   }
 
   logout() {
-    this.router.navigate(['/login']);
+    Swal.fire({
+      title: 'Tem certeza que deseja sair?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sim, sair',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.router.navigate(['/login']);
+      }
+    });
   }
 
 }

@@ -33,16 +33,13 @@ export class Colaboradores {
 
   ngOnInit() {
     this.route.paramMap.pipe(
-      // Extrai o ID da rota
       switchMap(paramMap => {
         const id = Number(paramMap.get('id'));
         if (!id) throw new Error('ID inválido');
 
-        // Atualiza dados do funcionário
         return this.funcionarioService.getFuncionarioDetalhado(id).pipe(
           tap(funcionario => this.funcionario = funcionario),
 
-          // Chama os outros métodos que não retornam observables
           tap(() => {
             this.loadSaldoHoras(id);
             this.loadHorasTrabalhadasSemana(id);
@@ -95,12 +92,10 @@ export class Colaboradores {
       (res: any) => {
         this.horasPorDiaSemana = res;
 
-        // Converte para decimal para usar no gráfico
         const horasConvertidas = res.map((item: any) =>
           this.convertTimeStringToDecimal(item.qtdHoras)
         );
 
-        // Armazena os valores originais (08:30:00, etc.)
         const valoresOriginais = res.map((item: any) => item.qtdHoras);
 
         this.barChartData = {

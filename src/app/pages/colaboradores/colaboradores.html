@@ -1,4 +1,114 @@
 <div class="row" style="height: 100vh; width: 100vw; ">
+    <div class="col-sm-2" style="background-color: #F0F0F0; padding: 20px 30px; height: 100vh;">
+        <app-menu-lateral> </app-menu-lateral>
+    </div>
+
+    <div class="col" *ngIf="funcionario" style="background-color: #8FB78F; padding: 20px; ">
+        <div class="d-flex">
+            <div class="d-flex"
+                style="background-color: #F0F0F0; border-radius: 50px; width: 836px; height: 80px; padding: 4px 50px; align-content: center; margin: 0 auto; justify-content: space-between;">
+                <div class="d-flex" style="height: 80%; margin: auto 0;">
+                    <img src={{funcionario.urlFoto}}
+                        style="width: 57px; height: 58px; background-color: #A02724; border-radius: 100%; margin-right: 8px; object-fit: cover;">
+                    <div>
+                        <span style="color: rgba(0, 0, 0, 0.7); font-size: 13px;">Nome</span>
+                        <p style="font-size: 16px; font-weight: 600;">{{ funcionario.nome }}</p>
+                    </div>
+                </div>
+                <div style="align-content: center; height: 80%; margin: auto 0;">
+                    <span style="color: rgba(0, 0, 0, 0.7); font-size: 13px;">Setor</span>
+                    <p style="font-size: 16px; font-weight: 600;"> {{ funcionario.setor.name }} </p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="d-flex" style="width: 1024px; margin: 30px auto;">
+            <div class="col" style="background-color: #F0F0F0; height: 136px; border-radius: 10px; margin: 0 20px;">
+                <div class="d-flex flex-column" style="margin-top: 20px; padding: 0 15px;">
+                    <p style="font-weight: 700; font-size: 32px;">{{ this.saldoHoras }}</p>
+                    <div class="d-flex">
+                        <img src="../../../assets/Alarm.svg" style="margin-right: 10px; width: 25px; height: 25px;"
+                            alt="">
+                        <p style="font-size: 18px; font-weight: 600;">Saldo de horas</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col" style="background-color: #F0F0F0; height: 136px; border-radius: 10px; margin: 0 20px;">
+                <div class="d-flex flex-column" style="margin-top: 20px; padding: 0 15px;">
+                    <p style="font-weight: 700; font-size: 32px;">{{ this.horasTrabalhadasSemana }}</p>
+                    <div class="d-flex">
+                        <img src="../../../assets/Briefcase.svg" style="margin-right: 10px; width: 25px; height: 25px;"
+                            alt="">
+                        <p style="font-size: 18px; font-weight: 600;">Horas Trabalhadas</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col" style="background-color: #F0F0F0; height: 136px; border-radius: 10px; margin: 0 20px;">
+                <div class="d-flex flex-column" style="margin-top: 20px; padding: 0 15px;">
+                    <p style="font-weight: 700; font-size: 32px;">{{ this.faltasSemana }}</p>
+                    <div class="d-flex">
+                        <img src="../../../assets/CalendarMinus.svg"
+                            style="margin-right: 10px; width: 25px; height: 25px;" alt="">
+                        <p style="font-size: 18px; font-weight: 600;">Faltas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 40px; padding-left: 20px;">
+            <div class="col"
+                style="width: 500px; background-color: #F0F0F0; border-radius: 10px; margin: 0 0px; height: 430px; padding: 20px; flex: 1;">
+                <p style="font-size: 20px; font-weight: 600; margin-top: 8px;">Pontos batidos</p>
+
+                <div *ngFor="let ponto of pontosSemana; let i = index"
+                    [style.background-color]="i % 2 === 0 ? '#CBE6C7' : '#8FB78F'"
+                    class="d-flex justify-content-between w-100 p-2"
+                    style="border-radius: 10px; padding: 5px 20px; width: 440px; margin-bottom: 10px;">
+
+                    <div class="d-flex">
+                        <div>
+                        </div>
+
+                        <div>
+                            <p style="font-size: 16px; font-weight: 600; margin: 0px;">{{ ponto.semana }}</p>
+                            <span style="font-size: 12px; color: rgba(0, 0, 0, 0.7);">Registros de ponto</span>
+                        </div>
+                    </div>
+
+                    <div [style.background-color]="i % 2 === 0 ? '#8FB78F' : '#CBE6C7'"
+                        style="border-radius: 100%; height: 50px; width: 50px; text-align: center; align-content: center;">
+                        <span style="font-weight: 700; font-size: 18px;">{{ ponto.quantidadePontos }}</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col"
+                style="width: 300px; background-color: #F0F0F0; border-radius: 10px; margin: 0 45px 0 45px; height: 430px; padding: 20px;">
+                <p style="font-weight: 600; font-size: 20px; text-align: center; margin-top: 8px;">Horas trabalhadas
+                    por
+                    dia</p>
+                <div style="width: 100%; height: 100%; padding: 10px;">
+                    <p-chart type="bar" [data]="barChartData" [options]="barChartOptions" width="100%"
+                        height="90%"></p-chart>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-end" style="width: 1525px;">
+            <div style="background-color: #CBE6C7; border-radius: 10px; padding: 10px; text-align: center; align-content: center; cursor: pointer; width: 200px; align-items: center; margin-top: 15px;"
+                (click)="exportarResumoMensalParaExcel()">
+                <span style="margin-right: 10px; font-size: 18px; font-weight: 700;">Exportar</span>
+                <img style="width: 25px; height: 25px; margin-bottom: 3px; " src="../../../assets/Download.svg" alt="">
+            </div>
+        </div>
+    </div>
+
+    <!-- 
+    <div class="row" style="height: 100vh; width: 100vw; ">
     <div class="col-sm-2" style="background-color: #F0F0F0; padding: 20px 30px;">
         <app-menu-lateral> </app-menu-lateral>
     </div>
@@ -103,4 +213,4 @@
             </div>
 
         </div>
-    </div>
+    </div> -->

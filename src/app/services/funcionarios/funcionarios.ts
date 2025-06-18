@@ -15,6 +15,13 @@ export interface Funcionario {
   status: string;
 }
 
+export interface FuncionarioAdd {
+  nome: string;
+  cargo: string;
+  urlFoto: string;
+  idSetor: number
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -39,7 +46,7 @@ export class Funcionarios {
     return this.httpClient.get<any>(`${this.urlLista}/${id}`);
   }
 
-  adicionarFuncionario(funcionario: Funcionario): Observable<Funcionario> {
+  adicionarFuncionario(funcionario: FuncionarioAdd): Observable<Funcionario> {
     return this.httpClient.post<Funcionario>(this.urlLista, funcionario);
   }
 }

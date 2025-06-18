@@ -61,13 +61,14 @@ export class Login {
 
     this.administradoresService.login(usuario, senha).subscribe({
       next: (res) => {
-        if (res.success) {
+        if (res.login === 'login realizado') {
           Swal.fire({
             icon: 'success',
             title: 'Login realizado!',
             timer: 1500,
             showConfirmButton: false
           });
+          this.paginaAdm();
         } else {
           Swal.fire({
             icon: 'error',

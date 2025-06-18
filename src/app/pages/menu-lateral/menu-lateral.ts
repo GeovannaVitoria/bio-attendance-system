@@ -142,9 +142,7 @@ export class MenuLateral implements OnInit {
         <input id="nome" placeholder="Nome" class="swal2-input">
         <input id="cargo" placeholder="Cargo" class="swal2-input">
         <input id="urlFoto" placeholder="URL da Foto" class="swal2-input">
-        <input id="status" placeholder="Status (ATIVO/INATIVO)" class="swal2-input">
         <input id="setorId" placeholder="ID do Setor" type="number" class="swal2-input">
-        <input id="setorName" placeholder="Nome do Setor" class="swal2-input">
       </form>
     `,
       focusConfirm: false,
@@ -154,11 +152,9 @@ export class MenuLateral implements OnInit {
         const nome = (document.getElementById('nome') as HTMLInputElement).value;
         const cargo = (document.getElementById('cargo') as HTMLInputElement).value;
         const urlFoto = (document.getElementById('urlFoto') as HTMLInputElement).value;
-        const status = (document.getElementById('status') as HTMLInputElement).value;
         const setorId = (document.getElementById('setorId') as HTMLInputElement).value;
-        const setorName = (document.getElementById('setorName') as HTMLInputElement).value;
 
-        if (!nome || !cargo || !urlFoto || !status || !setorId || !setorName) {
+        if (!nome || !cargo || !urlFoto || !setorId) {
           Swal.showValidationMessage('Todos os campos são obrigatórios');
           return false;
         }
@@ -167,11 +163,7 @@ export class MenuLateral implements OnInit {
           nome,
           cargo,
           urlFoto,
-          status,
-          setor: {
-            id: parseInt(setorId, 10),
-            name: setorName
-          }
+          setorId
         };
       }
     }).then((result) => {

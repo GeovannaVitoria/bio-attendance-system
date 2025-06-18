@@ -49,33 +49,58 @@ export class MenuLateral implements OnInit {
 
   cadastrarBiometria() {
     Swal.fire({
-      title: 'Posicione o dedo no leitor...',
-      text: 'Aguardando leitura biométrica.',
-      icon: 'info',
-      showConfirmButton: false,
-      timer: 2000
-    });
+      title: 'Cadastrar Biometria',
+      html:
+        `<input id="funcionario-id" type="number" class="swal2-input" placeholder="ID do Funcionário">` +
+        `<input id="bio-template" type="text" class="swal2-input" placeholder="Posição Biométrica">`,
+      focusConfirm: false,
+      showCancelButton: true,
+      confirmButtonText: 'Cadastrar',
+      preConfirm: () => {
+        const funcionarioId = Number((document.getElementById('funcionario-id') as HTMLInputElement).value);
+        const bioTemplate = (document.getElementById('bio-template') as HTMLInputElement).value;
 
-    const dados: BiometriaRequest = {
-      bioTemplate: 'Posição no leitor',
-      funcionarioId: 2
-    };
+        if (!funcionarioId || !bioTemplate) {
+          Swal.showValidationMessage('Todos os campos são obrigatórios!');
+          return null;
+        }
 
-    this.biometriaService.adicionarBiometria(dados).subscribe({
-      next: () => {
+        return { funcionarioId, bioTemplate };
+      }
+    }).then(result => {
+      if (result.isConfirmed && result.value) {
+        const { funcionarioId, bioTemplate } = result.value;
+
         Swal.fire({
-          title: 'Biometria cadastrada!',
-          icon: 'success',
-          confirmButtonText: 'OK'
+          title: 'Posicione o dedo no leitor...',
+          text: 'Aguardando leitura biométrica.',
+          icon: 'info',
+          showConfirmButton: false,
+          timer: 2000
         });
-      },
-      error: () => {
-        Swal.fire({
-          title: 'Erro!',
-          text: 'Falha ao cadastrar biometria.',
-          icon: 'error',
-          confirmButtonText: 'Tentar novamente',
-          confirmButtonColor: '#8FB78F'
+
+        const dados: BiometriaRequest = {
+          funcionarioId,
+          bioTemplate
+        };
+
+        this.biometriaService.adicionarBiometria(dados).subscribe({
+          next: () => {
+            Swal.fire({
+              title: 'Biometria cadastrada!',
+              icon: 'success',
+              confirmButtonText: 'OK'
+            });
+          },
+          error: () => {
+            Swal.fire({
+              title: 'Erro!',
+              text: 'Falha ao cadastrar biometria.',
+              icon: 'error',
+              confirmButtonText: 'Tentar novamente',
+              confirmButtonColor: '#8FB78F'
+            });
+          }
         });
       }
     });

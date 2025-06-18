@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Funcionarios } from '../../services/funcionarios/funcionarios';
+import { Funcionario, Funcionarios } from '../../services/funcionarios/funcionarios';
 import { Router } from '@angular/router';
 import { Biometria, BiometriaRequest } from '../../services/biometria/biometria';
 import Swal from 'sweetalert2';
@@ -47,25 +47,96 @@ export class MenuLateral implements OnInit {
     this.router.navigate(['/colaboradores', id]);
   }
 
+  // cadastrarBiometria() {
+  //   Swal.fire({
+  //     title: 'Cadastrar Biometria',
+  //     html:
+  //       `<input id="funcionario-id" type="number" class="swal2-input" placeholder="ID do Funcionário">` +
+  //       `<input id="bio-template" type="text" class="swal2-input" placeholder="Posição Biométrica">`,
+  //     focusConfirm: false,
+  //     showCancelButton: true,
+  //     confirmButtonText: 'Cadastrar',
+  //     preConfirm: () => {
+  //       const funcionarioId = Number((document.getElementById('funcionario-id') as HTMLInputElement).value);
+  //       const bioTemplate = (document.getElementById('bio-template') as HTMLInputElement).value;
+
+  //       if (!funcionarioId || !bioTemplate) {
+  //         Swal.showValidationMessage('Todos os campos são obrigatórios!');
+  //         return null;
+  //       }
+
+  //       return { funcionarioId, bioTemplate };
+  //     }
+  //   }).then(result => {
+  //     if (result.isConfirmed && result.value) {
+  //       const { funcionarioId, bioTemplate } = result.value;
+
+  //       Swal.fire({
+  //         title: 'Posicione o dedo no leitor...',
+  //         text: 'Aguardando leitura biométrica.',
+  //         icon: 'info',
+  //         showConfirmButton: false,
+  //         timer: 2000
+  //       });
+
+  //       const dados: BiometriaRequest = {
+  //         funcionarioId,
+  //         bioTemplate
+  //       };
+
+  //       this.biometriaService.adicionarBiometria(dados).subscribe({
+  //         next: () => {
+  //           Swal.fire({
+  //             title: 'Biometria cadastrada!',
+  //             icon: 'success',
+  //             confirmButtonText: 'OK'
+  //           });
+  //         },
+  //         error: () => {
+  //           Swal.fire({
+  //             title: 'Erro!',
+  //             text: 'Falha ao cadastrar biometria.',
+  //             icon: 'error',
+  //             confirmButtonText: 'Tentar novamente',
+  //             confirmButtonColor: '#8FB78F'
+  //           });
+  //         }
+  //       });
+  //     }
+  //   });
+  // }
+
   cadastrarBiometria() {
     Swal.fire({
       title: 'Cadastrar Biometria',
       html:
-        `<input id="funcionario-id" type="number" class="swal2-input" placeholder="ID do Funcionário">` +
+        `<input id="funcionario-nome" type="text" class="swal2-input" placeholder="Nome do Funcionário">` +
         `<input id="bio-template" type="text" class="swal2-input" placeholder="Posição Biométrica">`,
       focusConfirm: false,
       showCancelButton: true,
       confirmButtonText: 'Cadastrar',
       preConfirm: () => {
-        const funcionarioId = Number((document.getElementById('funcionario-id') as HTMLInputElement).value);
+        const nome = (document.getElementById('funcionario-nome') as HTMLInputElement).value.trim();
         const bioTemplate = (document.getElementById('bio-template') as HTMLInputElement).value;
 
-        if (!funcionarioId || !bioTemplate) {
+        if (!nome || !bioTemplate) {
           Swal.showValidationMessage('Todos os campos são obrigatórios!');
           return null;
         }
 
-        return { funcionarioId, bioTemplate };
+        const funcionarioEncontrado = this.funcionarios.find(f =>
+          f.nome.toLowerCase() === nome.toLowerCase()
+        );
+
+        if (!funcionarioEncontrado) {
+          Swal.showValidationMessage('Funcionário não encontrado!');
+          return null;
+        }
+
+        return {
+          funcionarioId: funcionarioEncontrado.id,
+          bioTemplate
+        };
       }
     }).then(result => {
       if (result.isConfirmed && result.value) {
@@ -105,6 +176,9 @@ export class MenuLateral implements OnInit {
       }
     });
   }
+
+
+
 
   modalCriarAdmin() {
     Swal.fire({

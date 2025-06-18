@@ -3,7 +3,7 @@
         <app-menu-lateral> </app-menu-lateral>
     </div>
 
-    <div class="col" style="background-color: #8FB78F; padding: 20px; ">
+    <div class="col" style="background-color: #8FB78F; padding: 50px; ">
         <div class="d-flex"
             style="background-color: #F0F0F0; border-radius: 50px; width: 836px; height: 76px; padding: 4px 40px; align-content: center; margin: 0 auto; justify-content: space-between;">
             <div style="align-content: center; height: 40%; margin: auto 0;" class="d-flex">
@@ -57,7 +57,7 @@
 
         <div class="row" style="margin-top: 40px;">
             <div class="col"
-                style="width: 50%; background-color: #F0F0F0; border-radius: 10px; margin: 0 20px; height: 430px; padding: 20px;">
+                style="width: 50%; background-color: #F0F0F0; border-radius: 10px; margin: 0 20px; height: 480px; padding: 20px;">
                 <p style="font-size: 20px; font-weight: 600;">Funcionários com mais horas extras</p>
 
                 <div *ngFor="let func of relacaoHorasExtras; let i = index"
@@ -86,10 +86,10 @@
 
 
             <div class="col"
-                style="width: 50%; background-color: #F0F0F0; border-radius: 10px; margin: 0 20px; height: 430px; padding: 20px;">
+                style="width: 50%; background-color: #F0F0F0; border-radius: 10px; margin: 0 20px; height: 480px; padding: 20px;">
                 <p style="font-weight: 600; font-size: 20px;">Banco de Horas</p>
 
-                <div style="width: 200px; height: 200px; margin: 0 auto;">
+                <div style="width: 200px; height: 200px; margin: 0 auto 30px 0;">
                     <p-chart type="doughnut" [data]="doughnutData" [options]="doughnutOptions"></p-chart>
                 </div>
 
